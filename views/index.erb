@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head></head>
+<head>
+	<style>
+		body { background: <%= color %> }
+	</style>
+</head>
 <body>
-	<form>
-		<input type = 'text' name = 'guess' />
-		<input type = 'submit' value = 'Guess!' />
-	</form>
-	<p><%= message %>
-	</p>
-	<!-- <p>
-		The SECRET NUMBER is <%= number %>
-	</p> -->
+	<% if !game_over %>
+		<form>
+			<input type = 'text' name = 'guess' />
+			<input type = 'submit' value = 'Guess!' />
+		</form>
+		<p><%= message %></p>
+		<% if cheat %>
+			<p>
+				The SECRET NUMBER is <%= number %>
+			</p>
+		<% end %>
+	<% else %>
+		<p>You lost!</p>
+		<p>Hit REFRESH for a new game</p>
+	<% end %>
 </body>
 </html>
